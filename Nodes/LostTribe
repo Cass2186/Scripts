@@ -84,6 +84,14 @@ public class LostTribe extends Node {
     public static final RSTile[] PATH_PT_1 = new RSTile[]{new RSTile(3222, 9617, 0), new RSTile(3224, 9617, 0), new RSTile(3226, 9615, 0), new RSTile(3228, 9613, 0), new RSTile(3230, 9611, 0), new RSTile(3232, 9610, 0), new RSTile(3234, 9610, 0), new RSTile(3236, 9610, 0), new RSTile(3239, 9610, 0), new RSTile(3241, 9611, 0), new RSTile(3243, 9612, 0), new RSTile(3246, 9612, 0), new RSTile(3247, 9614, 0), new RSTile(3248, 9616, 0), new RSTile(3249, 9618, 0), new RSTile(3249, 9620, 0), new RSTile(3251, 9621, 0), new RSTile(3251, 9623, 0), new RSTile(3253, 9625, 0), new RSTile(3253, 9627, 0), new RSTile(3253, 9629, 0)};
     public static final RSTile[] PATH_THROUGH_TUNNEL = new RSTile[]{new RSTile(3221, 9618, 0), new RSTile(3224, 9618, 0), new RSTile(3226, 9615, 0), new RSTile(3228, 9612, 0), new RSTile(3232, 9610, 0), new RSTile(3235, 9610, 0), new RSTile(3239, 9610, 0), new RSTile(3242, 9612, 0), new RSTile(3245, 9612, 0), new RSTile(3248, 9614, 0), new RSTile(3248, 9617, 0), new RSTile(3249, 9620, 0), new RSTile(3251, 9623, 0), new RSTile(3253, 9626, 0), new RSTile(3253, 9629, 0), new RSTile(3250, 9631, 0), new RSTile(3247, 9631, 0), new RSTile(3244, 9631, 0), new RSTile(3241, 9631, 0), new RSTile(3238, 9631, 0), new RSTile(3235, 9631, 0), new RSTile(3232, 9632, 0), new RSTile(3230, 9636, 0), new RSTile(3230, 9639, 0), new RSTile(3230, 9642, 0), new RSTile(3233, 9645, 0), new RSTile(3236, 9648, 0), new RSTile(3240, 9648, 0), new RSTile(3243, 9648, 0), new RSTile(3245, 9645, 0), new RSTile(3242, 9643, 0), new RSTile(3241, 9640, 0), new RSTile(3245, 9638, 0), new RSTile(3248, 9639, 0), new RSTile(3251, 9641, 0), new RSTile(3252, 9644, 0), new RSTile(3253, 9647, 0), new RSTile(3254, 9650, 0), new RSTile(3256, 9654, 0), new RSTile(3259, 9656, 0), new RSTile(3262, 9656, 0), new RSTile(3265, 9656, 0), new RSTile(3268, 9656, 0), new RSTile(3271, 9656, 0), new RSTile(3275, 9653, 0), new RSTile(3277, 9650, 0), new RSTile(3277, 9647, 0), new RSTile(3274, 9646, 0), new RSTile(3271, 9645, 0), new RSTile(3267, 9644, 0), new RSTile(3267, 9640, 0), new RSTile(3270, 9638, 0), new RSTile(3273, 9638, 0), new RSTile(3276, 9637, 0), new RSTile(3279, 9638, 0), new RSTile(3283, 9641, 0), new RSTile(3285, 9644, 0), new RSTile(3288, 9645, 0), new RSTile(3291, 9645, 0), new RSTile(3294, 9644, 0), new RSTile(3297, 9643, 0), new RSTile(3300, 9642, 0), new RSTile(3302, 9639, 0), new RSTile(3304, 9636, 0), new RSTile(3305, 9633, 0), new RSTile(3305, 9630, 0), new RSTile(3302, 9629, 0), new RSTile(3299, 9628, 0), new RSTile(3296, 9626, 0), new RSTile(3296, 9623, 0), new RSTile(3294, 9620, 0), new RSTile(3292, 9616, 0), new RSTile(3292, 9613, 0), new RSTile(3294, 9610, 0), new RSTile(3295, 9607, 0), new RSTile(3298, 9606, 0), new RSTile(3302, 9606, 0), new RSTile(3306, 9609, 0), new RSTile(3309, 9612, 0), new RSTile(3312, 9612, 0), new RSTile(3315, 9612, 0)};
 
+    private void checkRequirements(){
+        if (Skills.getActualLevel(Skills.SKILLS.MINING) < 17 || Skills.getActualLevel(Skills.SKILLS.THIEVING) < 13
+                || Skills.getActualLevel(Skills.SKILLS.AGILITY) < 13 ){
+            General.println("[Debug]: We are missing a Quest requirement (17 mining, 13 thieving & Agility required)");
+            FremennikTrials.LOST_TRIBE = false;
+            FremennikTrials.checkScriptStatus(FremennikTrials.lostTribe);
+        }
+    }
 
     public void buyItems() {
         FremennikTrials.stage = "Buying Items";
@@ -437,6 +445,7 @@ public class LostTribe extends Node {
 
     @Override
     public void execute() {
+        checkRequirements();
         FremennikTrials.currentQuest = "Lost Tribe";
         while (FremennikTrials.LOST_TRIBE) {
             General.sleep(100);
