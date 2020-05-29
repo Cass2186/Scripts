@@ -120,6 +120,225 @@ public class ForGenius {
             }
         }
     }
+    
+        public void solveDoor() {
+        FremennikTrials.stage = "Solving Door";
+        General.sleep(500);
+        if (Interfaces.get(229, 1) != null) {
+            String answer;
+            String seerText = Interfaces.get(229, 1).getText();
+            if (seerText.contains("My first is in fish, but not in the sea.")) {
+                answer = "FIRE";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.isInterfaceSubstantiated(298, 47)) {
+                    while (!Interfaces.get(298, 43).getText().contains("F")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("I")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("R")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("E")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+            if (seerText.contains("My first is in the well, but not at sea.")) {
+                answer = "LIFE";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.get(298, 47) != null) {
+                    while (!Interfaces.get(298, 43).getText().contains("L")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("I")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("F")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("E")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+            if (seerText.contains("My first is in mage, but not in wizard.")) {
+                answer = "MIND";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.get(298, 47) != null) {
+                    while (!Interfaces.get(298, 43).getText().contains("M")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("I")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("N")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("D")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+            if (seerText.contains("My first is in tar, but not in a swamp.")) {
+                answer = "TREE";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.get(298, 47) != null) {
+                    while (!Interfaces.get(298, 43).getText().contains("T")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("R")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("E")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("E")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+            if (seerText.contains("My first is in wizard, but not in a mage.")) {
+                answer = "WIND";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.get(298, 47) != null) {
+                    while (!Interfaces.get(298, 43).getText().contains("W")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("I")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("N")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("D")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+            if (seerText.contains("My first is in water, and also in tea.")) {
+                answer = "TIME";
+                General.println("[Debug]: Answer is: " + answer);
+                NPCInteraction.handleConversation();
+                Timing.waitCondition(() -> Interfaces.isInterfaceSubstantiated(298, 47), 3000);
+                General.sleep(General.random(300, 1000));
+                if (Interfaces.get(298, 47) != null) {
+                    while (!Interfaces.get(298, 43).getText().contains("T")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 48).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 44).getText().contains("I")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 50).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 45).getText().contains("M")) {
+                        General.sleep(General.random(150, 300));
+                        Interfaces.get(298, 52).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    while (!Interfaces.get(298, 46).getText().contains("E")) {
+                        General.sleep(General.random(50, 300));
+                        Interfaces.get(298, 54).click();
+                        General.sleep(General.random(500, 800));
+                    }
+                    if (Interfaces.isInterfaceSubstantiated(298, 56)) {
+                        Interfaces.get(298, 56).click(); // confirm button
+                        Timing.waitCondition(() -> !Interfaces.isInterfaceSubstantiated(298, 56), 3500);
+                    }
+                }
+                Utilities.clickObject(SEER_DOOR_ENTRANCE, "Open"); //4165 is the door ID that you need to open to enter Seer's building
+                General.sleep(General.random(2000, 4000));
+            }
+        }
+    }
 
     public void seerUpStairsItems() {
         if (BOTTOM_RIGHT_ROOM.contains(Player.getPosition())) {
