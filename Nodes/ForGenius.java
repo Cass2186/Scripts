@@ -38,7 +38,8 @@ public class ForGenius {
     int KEY = 3745;
     int VASE = 3734;
     int DRAIN = 4175;
-
+    int FULL_VASE = 3735;
+    
     int oldRedDish = 9947;
     int woodenDisk = 3744;
     int emptyJug = 3732;
@@ -504,8 +505,8 @@ public class ForGenius {
                     General.sleep(General.random(300, 2000));
 
                 }
-                if (Inventory.find(VASE).length > 0) {
-                    Utilities.useItemOnItem(VASE_LID, VASE);
+                if (Inventory.find(FULL_VASE).length > 0) {
+                    Utilities.useItemOnItem(VASE_LID, FULL_VASE);
                     Timing.waitCondition(() -> Inventory.find(SEALED_VASE).length > 0, 4000);
                     General.sleep(General.random(300, 2000));
                 }
@@ -531,14 +532,16 @@ public class ForGenius {
                 General.sleep(General.random(300, 3000));
                 updateItems();
             }
-            if (key.length > 0) {
-                if (PEER_UPSTAIRS_AREA.contains(Player.getPosition())) {
+           if (key.length > 0) {
+                if (peerUpstairs.contains(Player.getPosition())) {
                     FremennikTrials.stage = "Going downstairs";
                     Utilities.clickScreenWalk(new RSTile(2636, 3662, 2)); //if you don't walk to the trap door it goes down the wrong one
+                    Timing.waitCondition(() -> new RSTile(2636, 3662, 2).getPosition().distanceTo(Player.getPosition()) < 2, 8000);
+                    General.sleep(General.random(600, 2400));
                     if (Utilities.clickObject(CLOSED_TRAPDOOR, "Open"))
                         Timing.waitCondition(() -> Objects.findNearest(20, OPEN_TRAPDOOR).length > 0, 8000);
                     if (Utilities.clickObject(OPEN_TRAPDOOR, "Climb-down"))
-                        Timing.waitCondition(() -> BOTTOM_LEFT_ROOM.contains(Player.getPosition()), 8000);
+                        Timing.waitCondition(() -> bottomRoom.contains(Player.getPosition()), 8000);
                     General.sleep(General.random(500, 3000));
                 }
                 Utilities.useItemOnObject(KEY, 4166);
@@ -546,18 +549,18 @@ public class ForGenius {
                 NPCInteraction.waitForConversationWindow();
                 NPCInteraction.handleConversation();
                 updateItems();
-                if (!BOTTOM_RIGHT_ROOM.contains(Player.getPosition()) && !BOTTOM_LEFT_ROOM.contains(Player.getPosition())
-                        && !PEER_UPSTAIRS_AREA.contains(Player.getPosition())
-                        && Inventory.find(KEY).length < 1) {
-                    FremennikTrials.stage = "Home teleport";
-                    if (GameTab.open(GameTab.TABS.MAGIC)) {
-                        if (Interfaces.isInterfaceSubstantiated(218, 4)) {
-                            Interfaces.get(218, 4).click();
+                if (!peerBottomRightRoom.contains(Player.getPosition()) && Inventory.find(KEY).length < 1) {
+                    FremennikTrials.stage = "Home teleporting";
+                    SEER = true;
+                    if (GameTab.getOpen() != GameTab.TABS.MAGIC)
+                        GameTab.open(GameTab.TABS.MAGIC);
+                    if (Interfaces.isInterfaceSubstantiated(218, 5)) {
+                        if (Interfaces.get(218, 5).getComponentName().contains("Home Teleport")) {
+                            Interfaces.get(218, 5).click();
                             General.sleep(General.random(10000, 15000));
                             break;
                         }
                     }
-
                 }
             }
         }
