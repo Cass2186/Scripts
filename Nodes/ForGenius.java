@@ -67,9 +67,10 @@ public class ForGenius {
     RSItem[] invFrozenKey = Inventory.find(3741);
     RSItem[] key = Inventory.find(3745);
 
-    public RSArea BOTTOM_RIGHT_ROOM = new RSArea(new RSTile(2629, 3666, 0), new RSTile(2633, 3659, 0));
+
     public RSArea PEER_UPSTAIRS_AREA = new RSArea(new RSTile(2629, 3665, 2), new RSTile(2638, 3660, 2));
     public RSArea BOTTOM_LEFT_ROOM = new RSArea(new RSTile(2629, 3666, 0), new RSTile(2633, 3659, 0));
+    public RSArea BOTTOM_RIGHT_ROOM = new RSArea(new RSTile(2638, 3659, 0), new RSTile(2634, 3666, 0));
 
 
     public void updateItems() {
@@ -366,7 +367,7 @@ public class ForGenius {
                 }
                 if (invRedDish.length < 1) {
                     FremennikTrials.stage = "Getting red dish";
-                    if (Utilities.clickObject(BULLS_HEAD, "Study")) {
+                    if (Utilities.clickObject(UNICORN_HEAD, "Study")) {
                         NPCInteraction.waitForConversationWindow();
                         NPCInteraction.handleConversation();
                         Timing.waitCondition(() -> Inventory.find(oldRedDish).length > 0, 3000);
@@ -375,7 +376,7 @@ public class ForGenius {
                 }
                 if (invWoodenDisk.length < 1) {
                     FremennikTrials.stage = "Getting wooden dish";
-                    if (Utilities.clickObject(UNICORN_HEAD, "Study")) {
+                    if (Utilities.clickObject(BULLS_HEAD, "Study")) {
                         NPCInteraction.waitForConversationWindow();
                         NPCInteraction.handleConversation();
                         updateItems();
