@@ -8,7 +8,7 @@ import org.tribot.api2007.types.RSInterfaceComponent;
 
 import java.awt.*;
 
-public class Test {
+public class BankHandler {
 
     static int PARENT = 12;
     static int ITEM_WINDOW_CHILD = 12;
@@ -19,7 +19,7 @@ public class Test {
      * Gets Y coordinate for the item in args in bank
      *
      * @param itemId to search for
-     * @return absolute Y coordinate of interface containing item id
+     * @return absolute Y coordinate of interface containing item id; -1 if not found or bank not open
      */
     public static int getBankItemYCoordinate(int itemId) {
 
@@ -44,7 +44,7 @@ public class Test {
     /**
      * Gets Y coordinate for the scroll bar
      *
-     * @return Absolute Y coordinate of scroll bar (actual bar that moves)
+     * @return Absolute Y coordinate of scroll bar (actual bar that moves); -1 if not found or bank not open
      */
     public static int getBankScrollBarYCoordinate() {
         if (Banking.isBankScreenOpen()) {
