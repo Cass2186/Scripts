@@ -8,7 +8,7 @@ import org.tribot.api2007.types.RSInterfaceComponent;
 
 import java.awt.*;
 
-public class Test {
+public class BankHandler {
 
     static int PARENT = 12;
     static int ITEM_WINDOW_CHILD = 12;
@@ -66,11 +66,11 @@ public class Test {
 
                 if (Interfaces.isInterfaceSubstantiated(PARENT, ITEM_WINDOW_CHILD)) {
                     Rectangle rec = Interfaces.get(PARENT, ITEM_WINDOW_CHILD).getAbsoluteBounds();
-                    int buffer = (int) (Interfaces.get(PARENT, ITEM_WINDOW_CHILD).getHeight()/1.5);
-                    General.println("[BankTest]: Buffer is: " + buffer);
+                    int buffer = (int) (Interfaces.get(PARENT, ITEM_WINDOW_CHILD).getHeight()/1.5);  // buffer is the size of the banking item area/1.5 (can increase to 2 if issues)
+                    
                     for (int i = 0; i < 100; i++) { // limits to 100 scrolls of the mouse wheel
-                       General.sleep(General.random(50,200));
-                        General.println("[BankTest]: i is: " + i);
+                       General.sleep(General.random(50,150));
+    
                         if (!rec.contains(Mouse.getPos()))
                             Mouse.moveBox(rec);
 
